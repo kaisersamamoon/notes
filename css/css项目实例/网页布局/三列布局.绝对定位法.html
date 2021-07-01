@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三列布局</title>
+    <style>
+        .left{
+            width: 200px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: slateblue;
+        }
+        .right{
+            width: 200px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgb(54, 49, 82);
+        }
+        .center{
+            height: 500px;
+            margin: 0 200px;
+            background-color: rgb(129, 128, 134);
+
+        }
+        .container{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center"></div>
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue指令使用</title>
+  <script src="../vue.js"></script>
+  <style>
+    /* 斗篷 */
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="App" v-cloak>
+    <!-- 一次展示 -->
+    <h3 v-once>{{message}}</h3>
+    <ul>
+      <li v-for = "(value,index) in lists">{{value}}</li>
+    </ul>
+    <!-- 与v-html类似 -->
+   <h5 v-html = "datas"></h5>
+  </div>
+  <script>
+    setTimeout(function(){
+      app = new Vue({
+      el:"#App",
+      data:{
+        message:"这是一个文本",
+        lists:[1,2,3,4,5],
+        datas:"<a href='http://baidu.com'>这是一个链接</a>"
+      }
+    }) 
+    },5000)
+  </script>
+</body>
+</html>

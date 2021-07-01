@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+  <style>
+    *{
+      margin: 0;padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    ul li{
+      text-align: center;
+      margin: 40px auto;
+      font-size: 20px;
+      width: max-content;
+      height: max-content;
+    }
+
+    .result{
+      border-bottom: seagreen solid 2px;
+    }
+  </style>
+</head>
+<body>
+  <div id="App">
+    <ul>
+      <li v-for = "(v , i) in movies" @click = "flag = i" :class="{result : flag ==i}">{{v}}</li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data() {
+        return {
+          movies:["大话西游","暮光之城","大鱼海棠","第七秒生死缘"],
+          flag:1,
+        }
+      },
+    })
+  </script>
+</body>
+</html>

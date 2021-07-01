@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 从父组件拿到数据
+  子组件通过v-model实现双向绑定
+同时父组件的值也会随着改变 
+同时当num1数据是num2的一百倍
+num2的值是num1的1/100-->
+<script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <parent ></parent>
+  </div>
+  <template id="parent">
+    <div>
+      <h3>这里是父组件</h3>
+      <h3>父组件1:{{num1}}</h3>
+      <h3>父组件2:{{num2}}</h3>
+      <child :cnum1 = "num1" 
+      :cnum2 = "num2" 
+      @childchange1 = "changenum1" 
+      @childchange2 = "changenum2" >
+    </child>
+    </div>
+  </template>
+  <template id="child">
+    <div>
+      <h3>这里是子组件</h3>
+      <input type="text" v-model ="chnum1" @input = "inputchange1">
+      <h3>子组件1:{{chnum1}}</h3>
+      <input type="text" v-model = "chnum2" @input = "inputchange2">
+      <h3>子组件2:{{chnum2}}</h3>
+    </div>
+  </template>
+  <script>
+    const child = {
+      template:"#child",
+      props:{
+        cnum1:{
+          type:Number 
+        },
+        cnum2:{
+          type:Number 
+        }
+      },
+      data() {
+        return {
+         chnum1:this.cnum1,
+         chnum2:this.cnum2
+        }
+      },
+      methods: {
+        inputchange1(){
+          chnum1 =this.chnum1
+          
+          this.$emit("childchange1",chnum1)
+         this.chnum2 = this.chnum1*100
+         chnum2 = this.chnum2
+         this.$emit("childchange2",chnum2)
+        },
+        inputchange2(){
+         
+          chnum2 = this.chnum2
+          this.$emit("childchange2",chnum2)
+          this.chnum1 = this.chnum2*100
+         chnum1 = this.chnum1
+         this.$emit("childchange1",chnum1)
+         
+        }
+      },
+      
+    }
+
+    const parent = {
+      template:"#parent",
+      components:{
+        child
+      },
+      data() {
+        return {
+          num1:2,
+          num2:3,
+        }
+      },
+      methods: {
+        changenum1(chnum1){
+          chnum1 = parseInt(chnum1)
+          this.num1 = chnum1
+          
+        },
+        changenum2(chnum1){
+          chnum2 = parseInt(chnum2)
+          this.num2 = chnum2
+        }
+      },
+    }
+
+    new Vue({
+      el:"#App",
+      components:{
+        parent
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title>v-model</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:'#model',
+					data:{
+						text:18,
+						arr:[],
+						redio:'',
+						items:[
+							{text : '唱歌', value : 1},
+							{text : '跳舞', value : 2},
+							{text : 'hiphap', value : 3},
+						],
+						selected:'2',
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="model">
+			<p>{{text}}</p>
+			<input type="text" v-bind:value="text" disabled="disabled"/>
+			<!--表单的禁用 通过disabled -->
+			<input type="text" v-model="text"/>
+			<!--通过修改input输入框的值来改变上面文本的值，这就叫双向绑定-->
+			<input type="checkbox" value="1" v-model="arr"/>
+			<input type="checkbox" value="2" v-model="arr"/>
+			<input type="checkbox" value="3" v-model="arr"/>
+			<input type="checkbox" value="4" v-model="arr"/>
+			<!--多选框-->
+			{{arr.length}}
+			<div id="">
+				<input type="radio" name="text"  value="1" v-model="redio"/>
+				<input type="radio" name="text"  value="2" v-model="redio"/>
+				<input type="radio" name="text"  value="3" v-model="redio"/>
+				<input type="radio" name="text"  value="4" v-model="redio"/>
+				<!--单选框-->
+				{{redio}}
+			</div>
+			<div id="">
+				<select v-model="selected" >
+					<option v-for="(v,i) in items" v-bind:value ="v.value">{{v.text}}</option>
+						<!--注意value的值需要解析-->
+				</select>
+				{{selected}}
+			</div>
+		</div>
+	</body>
+</html>

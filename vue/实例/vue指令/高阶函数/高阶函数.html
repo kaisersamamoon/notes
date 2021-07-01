@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高阶函数</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="App">
+      <div>
+        <button @click = "num">filter</button>
+        <button @click = "num2">map</button>
+        <button @click = "num3">filter-map</button>
+        <button @click = "num4">map-filter</button>
+      </div>
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data:{
+        list:[2,3,4,8,11,4,6,44,12,33]
+      },
+      methods: {
+        num(){
+        //  遍历小于10的数，并添加进数组
+          let newList = this.list.filter(function (value) {
+            return value <10
+            })
+           console.log(newList)
+        },
+        num2(){
+          // 对数组中的每一个值进行运行，并添加进数组
+          let newList = this.list.map(function(n ){
+            return n*2
+          },0)
+          console.log(newList)
+        },
+        num3(){
+          let newList = this.list.filter(function(n){
+            return n>10
+          }).map(function(n){
+            return n
+          },0)
+          console.log(newList)
+        },
+        // 对数组进行遍历求和
+        num4(){
+          let total = this.list.reduce((n,m)=>{
+            return n+m
+          },0)
+          console.log(total)
+          // forEach遍历
+          let newList = this.list.forEach((v) => {
+            if(v<10){
+              console.log(v)
+              
+
+            }
+          
+          
+        });
+        console.log(newList)
+        
+        }
+       
+      },
+    })
+  </script>
+</body>
+</html>

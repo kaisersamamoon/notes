@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流布局</title>
+    <style>
+        body{
+            background-color: lightsalmon;
+            margin: 10px;
+        }
+        #page{
+            width: 888px;
+            margin: 0 auto;
+        }
+        .col{
+            column-count: 3;
+            column-gap: 10px;
+            column-fill: auto;
+        }
+        .pic{
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgb(0,0,0,0.5);
+        }
+        .pic img{
+            width:260px
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div class="col">
+            <div class="pic">
+                <img src="img/1.jfif" >
+                <p>111</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/2.jfif" >
+                <p>222</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/3.jfif">
+                <p>333</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/4.jfif">
+                <p>444</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/5.jfif">
+                <p>555</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/6.jfif" >
+                <p>666</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/7.jfif" >
+                <p>777</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/8.jfif">
+                <p>888</p>
+            </div>
+            
+            <div class="pic">
+                <img src="img/9.jfif">
+                <p>999</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

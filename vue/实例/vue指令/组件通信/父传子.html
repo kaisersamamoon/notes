@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父传子</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <my-parent></my-parent>
+  </div>
+
+<template id="parent">
+  <div>
+    <h3>这是父组件</h3>
+    <my-child :cmovies="movies" :cparent = "message"></my-child>
+  </div>
+</template>
+
+<template id="child">
+  <div>
+   <h5>这是子组件</h5>
+   <p>{{cparent}}</p>
+   <ul>
+     <li v-for = "items in cmovies">{{items}}</li>
+   </ul>
+   
+  </div>
+</template>
+  <script>
+   
+    // 子组件向父组件传递数据
+    // 通过事件发送/自定义事件$emit
+    const B = {
+      "my-child":{
+        template:"#child",
+        props:["cmovies","cparent"]
+      }
+    };
+    // 父组件向子组件传递属性通过props
+    const A = {
+      "my-parent":{
+        template:"#parent",
+        components:B,
+        data() {
+          return {
+            
+            movies:["海贼王","上海堡垒","变形金刚","大话西游","暮光之城"],
+            message:"parent"
+
+          }
+        },
+        
+      }
+    }
+    
+    new Vue({
+      el:"#App",
+      components:A
+    })
+  </script>
+</body>
+</html>

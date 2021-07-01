@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function (){
+				let bus = new Vue(); //使用空的Vue实例接收数据 
+				let A ={
+					template:"#a",
+					data(){
+						return {
+							names:'AAA'
+						}
+					},
+					methods:{
+						send(){
+							bus.$emit('data-a' ,this.names); //事件发送
+						}
+					}
+				};
+				let B = {
+					template:"#b",
+					data(){
+						return {
+							names:'BBB'
+						}
+					},
+					methods:{
+						send(){
+							bus.$emit('data-b',this.names);	//事件发送
+						}
+					}
+					
+				};
+				let C ={
+					template:"#c",
+					//组件生命周期
+					mounted(){
+						// bus.$on('data-a' ,function(names){
+						// 	//这里的this指向新建的Vue对象 使用箭头函数更改this指向
+						// 	this.names = names;
+						// })
+						bus.$on('data-a',names =>{
+							this.namesA = names;
+						}) //接收A组件传过来的数据
+						bus.$on('data-b',names =>{
+							this.namesB = names;
+						})//接收B传输过来的数据
+					},
+					data(){
+						return{
+							namesA:'',//变量实例
+							namesB:'',
+						}
+					}
+					
+				}
+				new Vue({
+					el:'#child',
+					
+					components:{
+						'my-a':A,
+						'my-b':B,
+						'my-c':C
+					}
+				})
+			}
+		</script>
+		<template id="a">
+			<div id="">
+				<h3> 组件a:{{names}} </h3>
+				<button type="button" @click="send"> 数据发送给C </button>
+			</div>
+		</template>
+		<template id="b" >
+			<div id="" >
+			<h3> 组件b:{{names}} </h3>
+			<button type="button" @click="send"> 数据发送给C </button>
+			</div>
+		</template>
+		<template id="c" >
+			<div id="" >
+				<h3> 组件c接收A数据:{{namesA}} </h3>
+				<h3> 组件c接收B数据:{{namesB}} </h3>
+			</div>
+		</template>
+	</head>
+	<body>
+		<div id="child">
+			<my-a> </my-a>
+			<my-b> </my-b>
+			<my-c> </my-c>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <!-- 父传子通信分三步
+    1.子组件需要在props指定一个变量(cmessage)用来接收父元素的属性
+    2.组件实例化需要绑定即cmessage接受父元素的哪一个属性
+    3.使用 
+    -->
+</head>
+<body>
+    <div id = "App">
+
+        <my-parent ></my-parent>
+    </div>
+
+<template id="parent">
+    <div>
+        <h3>这是一个父级组件</h3>
+        <p>{{message}}}</p>
+        <my-child :cmessage = "message"></my-child>
+    </div>
+</template>
+
+<template id="child">
+    <div>
+        <h3>这是一个子级组件</h3>
+        <p>{{cmessage}}</p>
+    </div>
+</template>    
+
+    <script>
+        const B = {
+            "my-child":{
+                template:"#child",
+                data() {
+                    return {
+                       
+                    }
+                },
+                props:["cmessage"]
+            },
+            
+        }
+        // 组件通信
+        const A ={
+            "my-parent":{
+                template:"#parent", 
+                components:B,
+                data() {
+                    return {
+                        message:"这是父组件的属性"
+                    }
+                },
+            },
+           
+            
+        }
+        new Vue({
+            el:"#App",
+            components:A
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-on</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id ="App">
+    <!-- 缓存并阻止重载 -->
+    <div @click.prevent = "divClick">
+      上级元素
+      <!-- 阻止事件传播 -->
+      <button @click.stop ="buttonClick">按钮一</button>
+      <!-- 只执行一次 -->
+    <button @click.once = "buttonClick">按钮二</button>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data:{
+
+      },
+      methods: {
+        divClick(){
+          console.log("你好")
+        },
+        buttonClick(){
+          console.log("你好")
+        }
+      }
+    })
+  </script>
+</body>
+</html>

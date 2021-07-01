@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+<div id="scope">
+  <compile v-show = "text"></compile>
+</div>
+
+<template id="child">
+  <div v-show = "judgment">
+    <h3>这是一个子组件</h3>
+  </div>
+</template>
+<template id="parent">
+  <div>
+    <h3>这是一个组件</h3>
+    <child></child>
+  </div>
+</template>
+
+
+  <script>
+    const child = {
+      template:"#child",
+      data() {
+        return {
+          judgment:false
+        }
+      },
+
+    }
+    const compile = {
+      template:"#parent",
+      components:{
+        child
+      },
+      data() {
+          return {
+            message:false
+          }
+        },
+    }
+    new Vue({
+      el:"#scope",
+      
+      components:{
+        compile,
+        
+      },
+      data() {
+        return {
+          text:true
+        }
+      },
+    })
+  </script>
+</body>
+</html>

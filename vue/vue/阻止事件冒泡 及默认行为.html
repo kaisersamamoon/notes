@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title>事件</title>
+		<!--阻止默认行为-->
+		<!--阻止事件传播-->
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el: '#on',
+					data: {
+						
+						},
+					methods:{
+						showA:function(){
+							alert('aaaa');
+						},
+						showB:function(){
+							alert('bbbbb');
+						},
+						showC:function(){
+							alert('cccc');
+						},
+						showD:function(){
+							alert('ddddd');
+						},
+						showE:function (event){
+							alert('跳转失败');
+						}
+					}
+				})
+			}
+		</script>
+		<style type="text/css">
+			.a{
+				
+				border: #008000 solid 0.1rem;
+				width: 25rem;
+				height: 25rem;
+				
+			}
+			.b{
+				border: #00FFFF solid 0.1rem;
+				margin:auto ;
+				margin-top: 3.125rem;
+				width: 18.75rem;
+				height: 18.75rem;
+			}
+			.c , .d{
+				margin-left:6.25rem;
+				margin-top: 1.5625rem;
+				width: 6.25rem;
+				height: 6.25rem;
+				border: #008000 solid 0.1rem;
+				text-align: center;
+			}
+			button{
+				width: auto;
+				height: auto;
+			}
+		</style>
+		<!--阻止事件传播-->
+	</head>
+	<body>
+		<div id="on">
+			<div id="" @click= "showA()" class= "a">
+				<div id= "" @click= "showB()" class= "b">
+					<div id= "" @click= "showC(	)" class= "c"></div>
+					<div id= "" @click.stop= "showD" class= "d"></div>
+					<!--阻止事件传播 采用修饰符 stop-->
+				</div>
+			</div>
+			<a href= "http://www.baidu.com" @click.prevent= "showE()">这是一个链接</a><br><br>
+			<!--阻止默认行为 采用修饰符。prevent-->
+			<button type="button" @click.once="showB()">按钮1</button>
+			<!--单次执行 采用修饰符 once-->
+		</div>
+	</body>
+</html>

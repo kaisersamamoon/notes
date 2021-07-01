@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title>v-bind</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:'#app',
+					data:{
+						title:'图片',
+						flag : true,
+						url:['./img/人物%20(1).png','./img/人物%20(2).png' , './img/人物%20(3).png'],
+						colo1:'p1',
+						colo2:'p2',
+						colo3:'p3',
+						
+						colo4:{color:'red',background:'yellow'},
+						colo5:{color:'green' ,border:'20px solid green'},
+						}
+						
+						
+				})
+			}
+		</script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#app img{
+				width: 31.25rem;
+				height: 31.25rem;
+			}
+			.p1{
+			background-color: #008000;	
+			border: 0.125rem solid #008000;
+			font-size: 1.5625rem;
+			}
+			.p2{
+				background-color: antiquewhite;
+			}
+			.p3{
+				background-color: aqua;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<img v-for = "(v,i) in url" v-bind:src = "url[i]" v-bind:title="title" >
+			<!--通过 v-bind  把地址映射到data上面 绑定图片获取路径-->
+			<div :class = "colo1" >这里是一段文字1 </div>
+			<!--单个样式引用-->
+			<div :class = "[colo1,colo2]" >这里是颜色替换的名字2</div>
+			<!--多个样式引用 相同的样式覆盖 其他的保留-->
+			<div :class="{'p1' : flag}">这里判断显示样式3</div>
+			<!--通过布尔值决定是否显示样式-->
+			<div id="" :style="colo4">这里是一段文字4</div>
+			<!--这里colo4直接指向data里面的值 ，-->
+			<div id="" :style="[colo4,colo5]">这里是一段文字5</div>
+			<!--style样式也可以指定多个与上面一致-->
+			<div id="" :style = "flag ? colo4 : colo5">这里是一段文字6</div>
+			<!--三目运算符判断-->
+		</div>
+		
+	</body>
+</html>

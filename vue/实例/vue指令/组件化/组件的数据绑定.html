@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件数据绑定</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <my-child></my-child>
+  </div>
+
+  <template id="child">
+    <div>
+      <h3>{{message}}</h3>
+      <button @click ="sayHello">按钮</button>
+    </div>
+  </template>
+
+  <script>
+     // 注意组件时一个单独的模块，他应该有属于他自己的方法及属性
+    // 组件抽离
+    const A = {
+        "my-child":{
+          template:"#child",
+          data() {
+            return {
+              message:"这是一段文字"
+            }
+          },
+          methods: {
+            sayHello(){
+              console.log("你好呀")
+            }
+          },
+        },
+      }
+    new Vue({
+      el:"#App",
+      data:{
+        message:"这是一段文字"
+      },
+      components:A
+    })
+  </script>
+</body>
+</html>

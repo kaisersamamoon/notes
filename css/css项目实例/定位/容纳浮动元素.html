@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>容纳浮动元素</title>
+    <style>
+        .container{
+            background-color: lightsalmon;
+            /*第一种方法float,注意当div也变成浮动，它就不再是占据一行了，而是恰如其分的包容*/
+            /*float: left;*/
+              /*第三个办法*/
+              overflow: hidden;
+        }
+        /*第二种方法采用clear清楚浮动,需添加一个空元素*/
+        /*.clear{
+            clear: both;
+        }*/
+        p{/*因为这里p元素设置列float浮动脱离了文档流，所有container没有可以包裹的元素了*/
+            float: left;
+            background-color: lightgreen;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>元素1</p>
+        <p>元素2</p>
+       <!--<div class="clear"></div>-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件分离</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id = "App">
+    <my-child></my-child>
+    <my-parent></my-parent>
+  </div>
+ 
+  <!-- 方式二 -->
+<template id="parent">
+  <div>
+    <h3>这是另一个组件</h3>
+  </div>
+</template>
+
+ <!-- 方式一 -->
+ <script type="text/x-template" id="child">
+  <div>
+    <h4>这是一个组件</h4>
+  </div>
+  </script>
+  <script>
+    new Vue({
+      el:"#App",
+      components:{
+        "my-child":{
+          template:"#child"
+        },
+        "my-parent":{
+        template:"#parent"
+      }
+      }
+    })
+  </script>
+</body>
+</html>

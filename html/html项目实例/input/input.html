@@ -1,0 +1,32 @@
+<DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>input</title>
+    </head>
+    <body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1024">
+        <label>请选择你要上传的文件:<input type="file" name="file"></label>
+        <br><br>
+        <label>年龄：<input type="number" name="age" min="1" max="100" step="1"></label>
+        <br><br>
+        <label>数值滚动条<input type="range" name="number" min="1" max="100" step="1"></label>
+        <br><br>
+        <label>邮箱:<input type="email" name="email" pattren="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/" placeholder="@xxx.com" required size="20" maxlength="10" ></label>
+        <br><br>
+        <label>电话:<input type="tel" name="tel" pattern="/^(?:(?:\+|00)86)?1\d{10}$/" placeholder="15464564784" required size="20" maxlength="10"></label>
+        <br><br>
+        <label>网站:<input type="url" name="url" pattern="/^(((ht|f)tps?):\/\/)?[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?$/" placeholder="http://*****.com" required size="20" list="urllist"></label>
+        <br><br>
+        <label><input type="button" name="button" value="提交"></label>
+        <br><br>
+    </form>
+
+    <datalist id="urllist">
+        <option value="http://baidu.com">第一个选项:百度</option>
+        <option value="http://360.com">第二个选项:360</option>
+        <option value="http://sougou.com">第三个选项:搜狗</option>
+    </datalist>
+    </body>
+    </html>

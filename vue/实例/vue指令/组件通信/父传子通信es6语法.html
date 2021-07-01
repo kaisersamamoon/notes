@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="App">
+    <parents></parents>
+  </div>
+
+<!-- 组件初始化 -->
+  <template id="parents">
+    <div>
+      <h3>父组件</h3>
+      <div>
+        <childs :cmovies ="movies" :cnames = "names"></childs>
+      </div>
+    </div>
+  </template>
+
+  <template id="childs">
+    <div>
+      <h3>子组件</h3>
+      <ul>
+        <li v-for = "items in cmovies">
+          {{items}}
+        </li>
+      </ul>
+      <h3>{{cnames}}</h3>
+    </div>
+  </template>
+  <script>
+// child组件
+  const childs = {
+    template:"#childs",
+    data() {
+      return {
+        
+      }
+    },
+    props:{
+      cmovies:{
+        type:Array,
+        default(){
+          return []
+        }
+
+      },
+      cnames:{
+        type:Object,
+        default(value){
+          return this.filenames+this.lastname
+        }
+      }
+    }
+  }
+  // parent组件
+  const parents = {
+    template:"#parents",
+    components:{
+      childs,
+          
+    },
+    data() {
+      return {
+        movies:["这","是","一","个","列","表",],
+        names:{
+          filenames:"潘",
+          lastname:"尚国"
+          }
+        }
+      },
+  }
+
+  //  vue对象
+    new Vue({
+      el:"#App",
+      components:{
+        parents,
+      },
+    })
+  </script>
+</body>
+</html>

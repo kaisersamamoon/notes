@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>表格制作</title>
+    <meta charset="utf-8">
+    <style>
+        table{border: 1px solid black;
+        border-collapse:collapse
+        }
+        th{border: 1px solid black; padding:10px}
+        td{border: 1px solid black;padding:10px}
+        caption{padding:15px;}
+        thead th{
+            background:gray;
+            color:white;}
+        tbody th{
+            background:lightgray;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>复仇者联盟主要成员技能表</caption>>
+        <!--添加 thead 和 tbody元素，更细致地规划表格-->
+        <thead>
+            <tr>
+                <th>外号</th>
+                <th>原名</th>
+                <th>特长</th>
+                <th>照片</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>死侍</th>
+                <td>韦德威尔逊</td>
+                <td>***</td>
+                <td><img src="img/死侍.jpg"></td>
+            </tr>
+            <tr>
+                <th>美国队长</th>
+                <td>史蒂芬.罗杰斯</td>
+                <td>***</td>
+                <td><img src="img/美国队长.jpg"></td>
+            </tr>
+            <tr>
+                <th>黑寡妇</th>
+                <td> 娜塔莎罗曼诺夫</td>
+                <td>***</td>
+                <td><img src="img/黑寡妇.jpg"></td>
+            </tr>
+            <tr>
+                <th>绿巨人</th>
+                <td>布鲁斯.班纳</td>
+                <td>***</td>
+                <td><img src="img/绿巨人.jpg"></td>
+            </tr>
+    </table>
+
+</body>
+    <tfoot>
+        <tr>
+            <td colspan="4">上述资料皆为个人主观臆断，非官方资料，仅供娱乐。</td>
+        </tr>
+    </tfoot>
+</html>

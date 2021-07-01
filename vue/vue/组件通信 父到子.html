@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload =function(){
+				Vue.component('my-world' ,{
+					template:'<h2>my world {{names}} ,{{msg}}</h2>',
+					data:function(){
+						return {
+							msg:'111'
+						}
+					},
+					props:['names'] //父到子
+				})
+				new Vue({
+					el:'#model',
+					data:{
+						msg:'hello parent',
+						names:'潘尚国'
+					},
+					components:{
+						'my-address':{
+							template:"#address",//组件模板
+							data:function(){
+								return {  //模板属性 
+									title:'title',  
+									list:[1,2,3,4],
+									
+								}
+							},
+							props:['msg'] //配置接收到的父元素的属性
+						}
+					}
+				})
+			}
+		</script>
+		<!--组件通信 三种情况
+		父  -- 子
+		子 --父
+		兄弟节点
+		-->
+		<title></title>
+		<template id="address">
+			<div id="">
+				<p>{{title}} --{{msg}}</p>
+				<ul>
+					<li v-for="(v ,i) in list">{{v}}</li>
+				</ul>
+			</div>
+		</template>
+	</head>
+	<body>
+		<div id="model">
+			<my-address :msg = 'msg'></my-address> <!--模板实例化-->
+			<!--把父组件的属性绑定到子组件需要指定一个属性来接收-->
+			<!--把父组件上面的msg组件绑定给 my-address-->
+			<my-world :names ='names'></my-world>
+			
+		</div>
+		
+	</body>
+</html>

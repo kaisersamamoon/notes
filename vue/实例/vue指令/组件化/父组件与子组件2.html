@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父组件与子组件</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <my-parent></my-parent>
+    <my-child></my-child>
+  </div>
+<!-- 定义父组件 -->
+  <template id="parent">
+    <div>
+      <h3>我是父组件</h3>
+      <h3>lading............</h3>
+     <div>
+      <my-child></my-child>
+     </div>
+    </div>
+  </template>
+<!-- 定义子组件 -->
+  <template id="child">
+    <div>
+      <h3>我是子组件</h3>
+      <h3>lading............</h3>
+    </div>
+  </template>
+  <script>
+    new Vue({
+      el:"#App",
+      components:{
+        // 这是一个父组件
+        "my-parent":{
+          template:"#parent",
+          // 这是一个子组件
+          components:{
+            "my-child":{
+              template:"#child"
+            }
+          }
+
+        },
+        // 如果需要单独使用子组件需要在父组件之外重新注册一次
+        "my-child":{
+          template:"#child"
+        }
+      }
+    })
+  </script>
+</body>
+</html>

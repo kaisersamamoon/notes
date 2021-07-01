@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问卷调查</title>
+    <link href="问卷调查.css">
+</head>
+<body>
+<p>校园问卷调查</p>
+    <form>
+        姓名：<input type="text" name="name">
+        <br><br>
+        性别:<label><input type="radio" name="sex" value="male">男</label>
+        <label><input type="radio" name="sex" value="female">女</label>
+        <br><br>
+        学院：<label><input type="text" name="text" list="textlist"></label>
+
+        <datalist id="textlist">
+            <option>信息与智能工程学院 </option>
+            <option>大数据学院</option>
+            <option>商学院</option>
+            <option>航空学院</option>
+            <option>旅游管理系</option>
+            <option>建筑工程系</option>
+        </datalist>
+        <p>第一题:你对校园涂鸦有什么看法</p>
+        <label><input type="radio" name="1">支持</label>
+        <label><input type="radio" name="1">反对</label>
+        <label><input type="radio" name="1">无所谓</label>
+    </form>
+    <video width="576*50%" height="1024*50%" src="video/IMG_6706.MP4" type="video/mp4" controls="controls" muted="muted" preload="metadata" poster="jpg/手捧烟花.jpg">
+        非常抱歉，本视频由于不可抗拒因素导致无法正常播放
+        <track src="字幕.vtt" srclang="zh" label="中文字幕" kind="subtitles" default="default">
+    </video>
+        <br><br>
+   <p>yesterday<br><br><audio src="music/Yesterday%20Once%20More.mp3" controls="controls">
+        非常抱歉，此音频由于不可抗拒因素导致无法正常播放
+   </audio></p>
+</body>
+</html>

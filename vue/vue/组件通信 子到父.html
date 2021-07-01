@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:'#root',
+					components:{	
+						'my-parent':{//定义一个父组件
+							template:"#parent",
+							data(){
+								return {
+									pname:'parent',
+									page:55,
+									cname:'',
+									cage:'',
+									
+								}
+							},
+							methods:{
+								handerSUbDate(name,age){
+									this.cname = name;
+									this.cage = age;
+								}
+							},
+							components:{
+								'my-child':{ //子组件
+									template:"#child",
+									data(){ 
+										return {
+											cname:'child',
+											cage:20
+										}
+									},
+									
+									props:['ppname','ppage'],
+									//定义一个方法
+									methods:{
+										sendMsg(){
+											//1、父组件可以使用 props 把数据传给子组件。
+											//2、子组件可以使用 $emit 触发父组件的自定义事件。
+											//发送事件，及参数 第一个变量为 事件名 后面为发送的参数
+											this.$emit('e-child' , this.cname,this.cage);
+										}
+									}
+								}
+							}
+						}
+					}
+				})
+			}
+		</script>
+		<title></title>
+		<template id="parent">
+			<div id="">
+				<!--父组件访问子组件 需要用到事件发射 事件发射器-->
+				<h3>我是父组件 ，访问我的数据 ，姓名：{{pname}} 年龄{{page}}</h3>
+				<h3> 我是父组件 访问子组件的数据 姓名{{cname}}  年龄 {{cage}}</h3>
+				<my-child  v-bind:ppname='pname' v-bind:ppage='page' v-on:e-child ="handerSUbDate" ></my-child><!--子组件实例化写在父组件里面--> 
+			</div>
+		</template>
+		<template id="child"> on the instance but referenced during render. Make sure th
+			<div >
+				<h5>我是子组件 访问父组件的数据 姓名{{ppname}} 年龄{{ppage}} </h5>
+				<h5> 我是子组件 访问我的数据 姓名 {{cname}} 年龄{{cage}}</h5>
+				<button type="button" @click="sendMsg">发生数据给父组件</button>
+			</div>
+		</template>
+	</head>
+	<body>
+		<div id="root">
+			<my-parent></my-parent> <!--实例化父组件--><!--此组件包含父子关系-->
+			 
+		</div>
+	</body>
+</html>

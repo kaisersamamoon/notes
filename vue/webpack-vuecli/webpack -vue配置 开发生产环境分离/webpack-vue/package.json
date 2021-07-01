@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "name": "webpackjs",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development",
+    "dev": "webpack serve --mode development --env development --open chrome --mode development"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
+}

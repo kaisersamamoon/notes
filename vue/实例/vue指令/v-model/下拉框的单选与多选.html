@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下拉框select</title>
+  <script src="../vue.js"></script>
+  <!-- 下拉库单选以及多选结合model的使用 -->
+  <!-- 多选使用 multiple  -->
+</head>
+<body>
+  <div id="App">
+    <select name="fruit" v-model = "fruit">
+      <option value="Apple">苹果</option>
+      <option value="banana">香蕉</option>
+      <option value="durian">榴莲</option>
+      <option value="hami">哈密瓜</option>
+    </select>
+    <p>{{fruit}}</p>
+    <!-- multiple 下拉框多选 -->
+    <select name="fruits" id="" v-model= "fruits" multiple>
+      <option value="apple">苹果</option>
+      <option value="banana">香蕉</option>
+      <option value="durian">榴莲</option>
+      <option value="hami">哈密瓜</option>
+      
+    </select>
+    <p>{{fruits}}</p>
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data:{
+        fruit:'Apple',
+        fruits:[]
+      }
+    })
+  </script>
+</body>
+</html>

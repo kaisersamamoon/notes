@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>具名插槽</title>
+  <script src="../vue.js"></script>
+
+</head>
+<body>
+  <div id="slot">
+    <parent>
+      <span>我变了</span>
+      <h3 slot="s1">左边</h3>
+      <h3 slot="s2">中间</h3>
+      <h3 slot="s3">右边</h3>
+    </parent>
+  </div>
+
+  <template id="slots">
+    <div>
+      <h3>这是一个组件</h3>
+      <div>
+        <slot name = "s1"><span>left</span></slot>
+        <slot name = "s2"><span>center</span></slot>
+        <slot name = "s3"><span>right</span></slot>
+        <slot>这是一个没有名字的插槽</slot>
+      </div>
+   </div>
+   
+  </template>
+  <script>
+    const parent ={
+      template:"#slots"
+    }
+    new Vue({
+      el:"#slot",
+      components:{
+        parent
+      }
+    })
+  </script>
+</body>
+</html>

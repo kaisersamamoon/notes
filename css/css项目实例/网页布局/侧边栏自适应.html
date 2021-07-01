@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侧边栏自适应</title>
+    <style>
+        aside{
+            width: 200px;
+            height: 500px;
+            background-color: oldlace;
+            /*第一种方法使用浮动*/
+            /*float: left;*/
+            /*第二种方法使用position*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+        }
+        main{
+            height: 500px;
+            margin-left:200px;
+            background-color: lightsalmon;
+        }
+        /*第二种方法*/
+        div{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <aside>左侧边栏</aside>
+    <main>主体内容</main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin塌陷</title>
+    <style>
+        .container{
+            background-color: pink;
+            /*overflow 属性规定当内容溢出元素框时发生的事情。
+            在这里是为了解决margin坍陷的问题*/
+            overflow: hidden;
+        }
+        .newbfc{
+            overflow: hidden;
+        }
+        p{
+            background-color: lightcyan;
+            margin: 20px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error laborum officiis voluptatum quia corporis at pariatur numquam adipisci libero aut dicta id exercitationem sit nobis, fugiat nam. Eligendi, quam quasi.</p>
+        <div class="newbfc">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error laborum officiis voluptatum quia corporis at pariatur numquam adipisci libero aut dicta id exercitationem sit nobis, fugiat nam. Eligendi, quam quasi.</p>
+        </div>
+    </div>
+</body>
+</html>

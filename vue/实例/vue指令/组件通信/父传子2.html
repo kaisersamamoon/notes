@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="com">
+    <my-parents></my-parents>
+  </div>
+  <template id="parents">
+    <div>
+      <h3>这是一个父组件</h3>
+      <my-childs :cmessage = "message" ></my-childs>
+    </div>
+  </template>
+
+  <template id="childs">
+    <div>
+      <h3>我是子元素</h3>
+      <h5>{{cmessage}}</h5>
+      <h5>{{cvalue}}</h5>
+    </div>
+  </template>
+  <script>
+    const childs = {
+      "my-childs":{
+        template:"#childs",
+        data() {
+          return {
+            
+          }
+        },
+        props:{
+          cmessage:{
+            type:String,
+            required:true
+           
+          },
+          cvalue:{
+            type:Array,
+            // default:"我是默认值"
+            default(){
+              return []
+            }
+          }
+        }
+      }
+    }
+    const parents = {
+      "my-parents":{
+        template:"#parents",
+        components:childs,
+        data() {
+          return {
+            message:"我是父元素",
+           
+          }
+        },
+      }
+    }
+    
+    new Vue({
+      el:"#com",
+      components:parents,
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子传父</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <!--vue挂载 -->
+  <div id="child">
+    <parents></parents>
+  </div>
+  <!-- 子组件 -->
+  <template id="childs">
+    <div>
+      <h3>这是子组件</h3>
+      <!-- 事件触发 -->
+      <button v-for = "(v,i) in categrose" @click = "chiclick(v)">
+        {{v.id}}
+      </button>
+    </div>
+  </template>
+<!-- 父组件 -->
+  <template id="parents">
+    <div>
+      <!-- 属性展示 -->
+      <h3>这是父组件</h3>
+      <h3>{{message}}</h3>
+      <div>
+        <!-- 事件绑定 -->
+        <childs @childata = "dosomesing"></childs>
+      </div>
+    </div>
+  </template>
+
+
+
+  <script>
+    // 子
+    const childs = {
+      template:"#childs",
+      data() {
+        return {
+          categrose:[
+            {id:1,names:"手机"},
+            {id:2,names:"电脑"},
+            {id:3,names:"数码"},
+            {id:4,names:"食品"},
+            {id:5,names:"服装"},
+          ]
+        }
+      },
+      // 事件发射
+      methods: {
+        chiclick(v){
+          console.log(v)
+         this.$emit('childata',v)
+         
+          
+        }
+      },
+    }
+    // 父
+    const parents ={
+      template :'#parents',
+      components:{
+        childs
+      },
+      data() {
+        return {
+          message:{}
+        }
+      },
+      // 事件处理
+      methods:{
+        dosomesing(v){
+          console.log(v)
+          this.message = v
+        }
+      }
+      
+    }
+    const App =new Vue({
+      el:"#child",
+      components:{
+        parents
+      }
+    })
+  </script>
+</body>
+</html>

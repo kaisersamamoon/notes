@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title>过滤器</title>
+		<script type="text/javascript">
+			window.onload =function(){
+				//全局指令
+				Vue.filter('addZero' , function(num){
+					return num < 10 ? '0' + num :num ;
+				})
+				new Vue({
+					el:'#app',
+					data:{
+						//定义一个时间戳
+						curTime:'1620378950',
+					},
+					//固定写法，局部指令
+					filters:{
+						number:function(num , n =2 /*默认值*/){
+							return num.toFixed(n);
+						},
+						//此方法为局部变量 只能在 el：'#app'这里面使用
+						date(data){
+							//格式化时间戳
+							let d = new Date(data*1000);
+							return d.getFullYear() + ' 年 ' + (d.getMonth()+1) + ' 月 ' + d.getDate() + ' 日 ';
+						}
+					}
+					
+				})
+			}
+		</script>
+		<style type="text/css">
+			#app{
+				width: 31.25rem;
+				height: 31.25rem;
+				border: #008000 solid 0.1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div >{{ 5 | addZero}}</div>
+			<!--通过管道使用-->
+			<div id="">{{3.1415926 | number(5)}}</div>
+			<!--指定参数 前面值为num 后面传参为执行函数 保留几位小数-->
+			<div id="">{{curTime | date}}</div>
+			<!--传入参数 执行函数-->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒子</title>
+    <style>
+        /*定义一个弹性盒子*/
+        .flex-container{
+            display: flex;
+            flex-wrap: wrap-reverse;
+            background-color: pink;
+        }
+        /*定义flex-container里面的所有div直接子元素*/
+        .flex-container >div{
+            margin: 20px;
+            padding: 20px;
+            color: white;
+            background-color: lightblue;
+        }
+        .inline-flex{
+            display: inline-flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            background-color: lightgreen;
+        }
+        .inline-flex >div{
+            margin: 20px;
+            padding: 20px;
+            background-color: lightsalmon;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+    </div>
+    <br><br>
+    <div class="inline-flex">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+    </div>
+</body>
+</html>

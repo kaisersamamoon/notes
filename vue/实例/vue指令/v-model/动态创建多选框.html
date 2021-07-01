@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态绑定：值绑定</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id = "checkbox">
+    <label :for="items" v-for = "items in originHobbies">
+      <input type="checkbox" :id="items" id="" :value = "items" v-model = "hobbies">{{items}}
+    </label>
+    <p>{{hobbies}}</p>
+  </div>
+  <script>
+    new Vue({
+      el:"#checkbox",
+      data:{
+        hobbies:[],
+        originHobbies:["橘子","香蕉","哈密瓜","西瓜","榴莲"]
+      }
+    })
+  </script>
+</body>
+</html>

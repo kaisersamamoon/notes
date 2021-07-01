@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- $children and $parent -->
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="com"> 
+    <parents></parents>
+  </div>
+  <!-- parent 模板-->
+  <template id="parents">
+    <div>
+        <h3>父组件</h3>
+        <div>
+          <child1 ref="child1"></child1>
+          <child2 ref="child2"></child2>
+        </div>
+        <button @click = "parent">按钮</button>
+    </div>
+  </template>
+  <!-- children1 模板-->
+  <template id="child1">
+    <div>
+      <h3>我是子组件1</h3>
+      <button @click = "c1buton">按钮</button>
+      <child11child></child11child>
+    </div>
+  </template>
+  <!-- children2 模板-->
+  <template id="child2">
+    <div>
+      <h3>我是子组件2</h3>
+      <button @click = "c2buton">按钮</button>
+    </div>
+  </template>
+  <template id="child11child">
+    <div>
+      <h3>这是child1下面的子组件</h3>
+      <button @click = "button">按钮</button>
+    </div>
+  </template>
+  <script>
+    const child11child = {
+      template:"#child11child",
+      methods: {
+        button(){
+          console.log(this.$parent.$parent)
+        }
+      },
+    }
+    // 定义
+    const child1 = {
+      template:"#child1",
+      data() {
+        return {
+          message:"我是子组件1"
+        }
+      },
+      methods: {
+        c1buton(){
+          console.log(this.$parent)
+        }
+      },
+      components:{
+        child11child
+      }
+    }
+
+    const child2 = {
+      template:"#child2",
+      data() {
+        return {
+          message:"我是子组件2"
+        }
+      },
+      methods: {
+        c2buton(){
+          console.log(this.$parent)
+        }
+      },
+    }
+
+    const parents = {
+      template:"#parents",
+      components:{
+        child1,
+        child2,
+      },
+      data() {
+        return {
+          message:"我是父组件1"
+        }
+      },
+      methods: {
+        parent(){
+          // 方法一 $children
+          // 返回的是一个对象 里面包含了该组件的所有子组件
+          console.log(this.$children)
+          // 可以通过此方法改变子组件的属性或值
+          // 该方法不推荐使用
+         
+          // 第二种方法 $refs
+          console.log(this.$refs.child1)
+
+        }
+      },
+    }
+    new Vue({
+      el:"#com",
+      components:{
+        parents
+      }
+    })
+  </script>
+</body>
+</html>

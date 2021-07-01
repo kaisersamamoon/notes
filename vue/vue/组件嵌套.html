@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function (){
+				new Vue({
+					el:'#model',
+					data:{
+						flag:'',
+						flag2:'my-change2',
+					},
+					components:{
+						'my-tr':{
+							template:'#tr',
+							
+						},
+						'my-slort':{
+							template:'#slort'
+						},
+						'my-tab':{		//自定义局部一个组件
+							template:'#tab',//组件模板
+							data:function(){ /*模板数据*/
+								return {tabTitle:['标题1','标题2','标题3','标题4'],
+							cur:0,
+							tabContents:['内容一','内容二','内容三','内容四'],}
+							}	
+						},
+						'my-change1':{
+							template:'<h1>{{x}}</h1>',
+							data:function(){
+								return {
+									x:Math.random()
+								}
+							}
+						},
+						'my-change2':{
+							template:'<h3>{{x}}</h3>',
+							data:function(){
+								return {
+									x:Math.random()
+								}
+							}
+						},
+					},
+				})
+			}
+		</script>
+		<title></title>
+		<style type="text/css">
+			ul ,li{
+				padding: 0; margin: 0;
+				
+			}
+			.tab-tit li{
+				padding: 0.625rem 0.9375rem;
+				text-align: center;
+				list-style: none;
+				cursor: pointer;
+				/*鼠标样式*/
+				display: inline-flex;
+				
+			}
+			.tab-tit .active{
+				/*设置点击样式*/
+				color: #008000;
+				border-bottom: 1px solid #FAEBD7;
+			}
+			.tab-con div{
+				margin: 1.875rem;
+			}
+		</style>
+		<template id="tr">
+			<tr>
+				<td>aaa</td>
+				<td>bbb</td>
+			</tr>
+		</template>
+		<template id="slort">
+			<div id="">
+				<p>this is sort</p>
+				<!--定义插槽-->
+				<slot name="s1"></slot>
+				<slot name="s2"></slot>
+			</div>
+		</template>
+		<template id="tab">
+			<div>
+				<ul class= "tab-tit" >
+					<li v-for="(v , i) in tabTitle" @click= "cur= i" :class="{active :cur ==i}">{{v}}</li>
+				</ul>
+				<div class= "tab-con">
+					<div v-for= "(v , i) in tabContents" v-show= "i=== cur">{{v}}</div>
+				</div>
+			
+			</div>
+		</template>
+	</head>
+	<body>
+		<div id="model">
+			<my-tab></my-tab>
+			<!--组件高级用法-->
+			<table border=" 2px solid green" cellspacing="" cellpadding="">
+				<!-- <my-tr></my-tr> -->
+				<!--is指令 表示里面的内容是一个组件 告诉浏览器按照组件的方式去解析-->
+				<tr is = 'my-tr'></tr>
+				<!--插槽-->
+				<!--设计模式 模板模式-->
+				<my-slort>
+					<ul slot='s1'>
+						<li>111</li>
+						<li>222</li>
+					</ul>
+					<ul slot ='s2'>
+						<li>aaa</li>
+						<li>bbb</li>
+					</ul>
+				</my-slort>
+				<!--动态组件-->
+				<!--动态模板-->
+				<button type="button" @click="flag ='my-tab'">this is button</button>
+				<button type="button" @click="flag ='my-tr'">this is slort</button>
+				<!--:is 绑定的必须是data里面的一个变量
+				变量指向的就是组件名字-->
+				<component :is="flag"> </component>
+				
+				<!--动态组件状态 状态管理-->
+				<!--状态就是数值的变化-->
+				<button type="button" @click="flag2 ='my-change1'">this is change1</button>
+				<button type="button" @click="flag2 ='my-change2'">this is change2</button>
+				<component :is="flag2"> </component>
+				<!--状态保持-->
+				<!--keep-alive 缓存非活动组件-->
+				<keep-alive> <!--性能优化-->
+					<component :is="flag2"> </component>
+				</keep-alive>
+			</table>
+		</div>
+	</body>
+</html>

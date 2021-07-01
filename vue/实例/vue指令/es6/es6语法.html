@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Es6</title>
+</head>
+<body>
+  <button>按钮一</button>
+  <button>按钮二</button>
+  <button>按钮三</button>
+  <button>按钮四</button>
+  <br><br><br>
+  <input type="button" value="按钮一">
+  <input type="button" value="按钮二">
+  <input type="button" value="按钮三">
+  <input type="button" value="按钮四">
+</body>
+<script>
+  // es5
+  var button = document.querySelectorAll("button");
+  for(var i = 0 ;i < button.length ; i++){
+    button[i].addEventListener("click",function(){
+      console.log(i)
+    })
+  }
+  // es6
+  var input = document.querySelectorAll("input");
+  for(let i = 0 ;i < button.length; i++){
+    input[i].addEventListener("click",function(){
+      console.log(i+1)
+    })
+  }
+</script>
+</html>

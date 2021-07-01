@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计数器</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="count">
+    <my-count></my-count>
+    <my-count></my-count>
+  </div>
+
+<template id="counter">
+  <div>
+    <h3>当前数字{{message}}</h3>
+    <button @click = "add">+</button>
+    <button @click = "sub">-</button>
+  </div>
+</template>
+
+  <script>
+    // 封装计数器
+    Vue.component("my-count",{
+      template:"#counter",
+      data() {
+        return {
+          message:0
+        }
+      },
+      methods: {
+        add(){
+         if(this.message <10){
+          this.message++
+         }
+        },
+        sub(){
+         if(this.message >0){
+          this.message--
+         }
+        }
+      },
+    })
+    new Vue({
+      el:"#count",
+
+    })
+  </script>
+</body>
+</html>

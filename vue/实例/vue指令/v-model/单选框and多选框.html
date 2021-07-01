@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>checkbox</title>
+  <script src="..//vue.js"></script>
+  <!-- v-model结合单选框以及多选框 -->
+</head>
+<body>
+  <div id="App">
+    <label for="chekbox">
+      <input type="checkbox" name="Agree" id="chekbox" v-model = "isAgree">同意以上协议
+    </label>
+    <p>这是单选框value的值{{isAgree}}</p>
+    <button :disabled = "!isAgree">下一步</button>
+    <!-- ------------------------ -->
+    <h3>多选框</h3>
+    <input type="checkbox" id="" value="足球" v-model = "hobbies">主球
+    <input type="checkbox" id="" value="篮球" v-model = "hobbies">篮球
+    <input type="checkbox" id="" value="羽毛球" v-model = "hobbies">羽毛球
+    <input type="checkbox" id="" value="乒乓球" v-model = "hobbies">乒乓球
+    <p>我是多选框的值{{hobbies}}</p>
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data:{
+        isAgree:false,
+        hobbies:[]
+      }
+    })
+  </script>
+</body>
+</html>

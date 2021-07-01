@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父组件和子组件</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="com">  
+    <!-- 使用组件1 -->
+    <parent></parent>
+    <p>.............................</p>
+    <!-- 使用组件2 -->
+    <child></child>
+  </div>
+  <script>
+    // 创建组件1(子组件)
+    const comP1 = Vue.extend({
+      template:`
+        <div>
+          <h4>我是组件1</h4>
+          <h4>lading..........</h4>  
+        </div>
+      `
+    })
+    // 创建组件2(父组件)
+    const comP2 = Vue.extend({
+      // 使用组件1
+      template:`
+        <div>
+          <h4>我是组件2</h4>  
+          <h4>lading..........</h4>  
+          <parent2></parent2>
+        </div>
+      `,
+      // 初始化组件1
+      components:{
+        "parent2":comP1
+      }
+    })
+    new Vue({
+      el:"#com",
+      components:{
+        // 实例化组件1
+        "parent":comP1,
+        // 实例化组件2
+        "child":comP2,
+        
+      }
+    })
+  </script>
+</body>
+</html>

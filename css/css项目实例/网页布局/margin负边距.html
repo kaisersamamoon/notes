@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin负值练习</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            line-height: 1.3em;
+        }
+        .col2{
+            margin-left: 100px;
+        }
+        .col3{
+            margin-left: 200px;
+        }
+        .top{
+            margin-top: -2.6em;
+        }
+        #content{
+            width: 100%;float: left;margin-right: -200px;
+        }
+        #sidebar{
+            width: 200px;float: left;
+        }
+        #content p{
+            margin-left: 210px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="col1">Eggs</li>
+        <li class="col1">Ham</li>
+        <li class="col2 top">Bread</li>
+        <li class="col2">Butter</li>
+        <li class="col3 top">Flous</li>
+        <li class="col3">Cream</li>
+    </ul>
+    <div id="content"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero provident consequatur nostrum quas inventore ad voluptatem tempora fugiat, a id voluptatum nesciunt dolores autem nihil eveniet placeat! Quod, inventore ratione.</p></div>
+    <div id="sidebar"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi aut maxime explicabo est aspernatur atque, eos quibusdam saepe ex amet repellat assumenda. Praesentium vero expedita officia id esse non distinctio.</p></div>
+
+</body>
+</html>

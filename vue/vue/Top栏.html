@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title>tab页</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:'#root',
+					data:{
+						tabTitle:['标题1','标题2','标题3','标题4'],
+						cur:0,
+						tabContents:['内容一','内容二','内容三','内容四'],
+					}
+				})
+			}
+		</script>
+		<style type="text/css">
+			ul ,li{
+				padding: 0; margin: 0;
+				
+			}
+			.tab-tit li{
+				padding: 0.625rem 0.9375rem;
+				text-align: center;
+				list-style: none;
+				cursor: pointer;
+				/*鼠标样式*/
+				display: inline-flex;
+				
+			}
+			.tab-tit .active{
+				/*设置点击样式*/
+				color: #008000;
+				border-bottom: 1px solid #FAEBD7;
+			}
+			.tab-con div{
+				margin: 1.875rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id= "root">
+
+				<ul class= "tab-tit">
+				<!-- 
+					<li @click= "cur= 0" :class= "{active:cur== 0}">标题1</li>
+					<li @click= "cur= 1" :class= "{active:cur== 1}">标题2</li>
+					<li @click= "cur= 2" :class= "{active:cur== 2}">标题3</li> -->
+					<!--通过判断cur的值 来决定是否应用active 样式
+					当点击li[1]当时cur为0 条件满足 li[1]应用该样式
+				-->
+					<li v-for="(v , i) in tabTitle" @click= "cur= i" :class="{active :cur ==i}">{{v}}</li>
+				</ul>
+			<!-- 			
+			<div class="tab-con">
+				<div v-show= "cur== 0">内容1</div>
+				<div v-show= "cur== 1">内容2</div>
+				<div v-show= "cur== 2">内容3</div>
+			</div> 
+			-->
+			<!--通过 v-show 条件判断决定是否显示内容-->
+			
+				<div class= "tab-con">
+					<div v-for= "(v , i) in tabContents" v-show= "i=== cur">{{v}}</div>
+				</div>
+		</div>
+	</body>
+</html>
+
+
+
+				
+			
+				
+			

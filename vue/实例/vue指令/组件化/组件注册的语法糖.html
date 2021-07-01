@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件注册的语法糖</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">  
+    <my-Parent></my-Parent>
+    <p>分割线............</p>
+    <my-child></my-child>
+  </div>
+
+
+  <template id="child">
+    <div>
+      <h3>我是子组件</h3>
+    </div>
+  </template>
+  <script>
+    //省略extend构造器，使用语法糖
+    
+    Vue.component("my-parent",{
+      template:`
+        <div>
+          <h3>这是一个组件</h3>
+          <h3>
+            <my-child></my-child>  
+          </h3>
+        </div>
+      `,
+      // 子组件
+      components:{
+        "my-child":{
+          template:"#child"
+        }
+      }
+    })
+    new Vue({
+      el:"#App",
+      // 这个也是语法糖
+     components:{
+       "my-child":{
+         template:"#child"
+       }
+     }
+    })
+  </script>
+</body>
+</html>

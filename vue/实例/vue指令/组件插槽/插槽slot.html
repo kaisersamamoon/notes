@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot插槽</title>
+  <script src="../vue.js"></script>
+
+</head>
+
+<body>
+  <div id="slot">
+    <parent>
+      <span>这是一个插槽</span>
+      <h3>这是一个插槽</h3>
+
+    </parent>
+    <parent>
+
+    </parent>
+  </div>
+
+  <template id="parent">
+    <div>
+      <h3>我是一个插件</h3>
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+    const parent = {
+      template: "#parent"
+    }
+    new Vue({
+      el: "#slot",
+      data() {
+        return {
+
+        }
+      },
+      components: {
+        parent
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件生命周期 组件实例的修改</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:'#root',
+					data:{
+						msg:'生命周期'
+					},
+					methods:{
+						update(){
+							this.msg = '组件更新'
+						},
+						destroy(){
+							this.$destroy();
+						}
+						
+					},
+					//生命周期钩子，创建前
+					beforeCreate() {
+						console.log('beforeCreate......')
+					},
+					created() {//创建后
+						console.log('created.....')
+					},
+					beforeMount() {//装载前
+						console.log('beforeMount.....')
+					},
+					mounted() {//装载后
+						console.log('mounted.......')
+					},
+					beforeUpdate() {//更新前
+						console.log('beforeUpdate.....')
+					},
+					updated() {//更新后
+						console.log('updated.......')
+					},
+					beforeDestroy() {//销毁前
+							console.log('beforeDestroy.......')
+					},
+					destroyed() {//销毁后
+						console.log('destroyed........')
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="root">
+			{{msg}}
+			<button type="button" @click="update">updated组件更新</button>
+			<button type="button" @click="destroy">destroy 组件销毁</button>
+		</div>
+	</body>
+</html>

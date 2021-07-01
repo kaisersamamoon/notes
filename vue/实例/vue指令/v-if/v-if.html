@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户登录切换</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <span v-if = "flag">
+      <label for="phone">手机号登录</label>
+      <!-- key 因为vue采用虚拟dom 故每次切换并不会重新创建一个input标签，故会把上一个input标签的value值拿过来，key的作用是告诉他这两个input不一样 -->
+      <input type="text" id="phone" key = "phone" placeholder="phone">
+    </span>
+    <span v-else >
+      <label for="email">邮箱登录</label>
+      <input type="text" id="email" key = "email" placeholder="email">
+    </span>
+    <button @click= "flag = !flag">点击切换</button>
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data() {
+        return {
+          flag: true,
+        }
+      },
+    })
+  </script>
+</body>
+</html>

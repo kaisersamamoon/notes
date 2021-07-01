@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model修饰符</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <!-- 通过lazy 懒加载 失去焦点 |敲回车的时候 实现延迟绑定 -->
+
+
+    <!-- lazy修饰符 -->
+    <input type="text" name="" id="" v-model = "text">这是一个输入框
+    <input type="text" name="" id="" v-model.lazy = "message">
+
+
+    <!-- number修饰符 -->
+    <!--  自动对输入框的内容进行类型转换 出现string后面的自动忽略掉-->
+    <input type="text" name="" id="" v-model.number = "numbers">这是一个数字输入框
+    
+    <!-- trim 拨出左右两边的空格 -->
+    <input type="text" name="" id="" v-model.trim = "names">这是一个 trim
+    <input type="text" name="" id="" v-model = "age">这是一个 trim
+
+
+
+    <h3>{{message}}</h3>
+    <h3>{{text}}</h3>
+    <h3>{{typeof numbers}}</h3>
+    <h3>{{names}}</h3>
+  </div>
+  <script>
+    app = new Vue({
+      el:"#App",
+      data:{
+        message:"这是一个message",
+        text:"这是一段文本",
+        numbers:444,
+        names:"",
+        age:''
+      }
+    })
+  </script>
+</body>
+</html>

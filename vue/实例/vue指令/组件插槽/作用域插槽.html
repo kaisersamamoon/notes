@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="com">
+    <!-- 如果插槽内没有内容则按照默认方式展示 -->
+    <parent>
+
+    </parent>
+
+    <parent>
+      <!--  -->
+      <!-- 通过获取slot插槽 -->
+      <template slot-scope="slot">
+        
+        <span v-for = "itmes in slot.data">{{itmes}}-</span>
+      </template>
+    </parent>
+
+  </div>
+
+  <template id="parent">
+    <div>
+      <h3>this is components</h3>
+      <!-- 通过v-bind 将carlist的属性 绑定给data -->
+      
+      <slot :data = "carList">
+        <ul>
+          <li v-for = "items in carList">{{items}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script>
+    const parent = {
+      template:"#parent",
+      data() {
+        return {
+          carList:["兰博基尼","法拉利","保时捷","阿尔法.罗密欧",]
+        }
+      },
+    }
+
+    new Vue({
+      el:"#com",
+      data() {
+        return {
+          
+        }
+      },
+      components:{
+        parent
+      }
+    })
+  </script>
+</body>
+</html>

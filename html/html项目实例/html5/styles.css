@@ -1,0 +1,27 @@
+body{
+    background-image:url("img/dell.gif")
+}
+h1{text-align:center;
+    color:white;
+}
+
+h2{margin-left:88%;
+    color:white;
+}
+h3{margin-left:90%;
+    color:white;
+}
+p{
+    text-indent:32px;
+    font-size:16px;
+    line-height:32px;
+    color:white;
+}
+img{position:absolute;
+    left:70%;
+    margin-left:-181px;
+}
+a{margin-left:90%;
+    color:white;
+
+}

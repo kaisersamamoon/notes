@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素水平垂直居中</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 20px;
+            color: linen;
+            background-color: lightsalmon;
+            /*块级元素水平居中*/
+            text-align:center;
+            /*行内元素水平居中
+            浏览器会自动分配左右平均剩余宽度*/
+            margin:auto;
+            /*行内元素垂直居中*/
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        div span{
+            /*块级元素垂直居中*/
+            font-size: 20px;
+            line-height: 200px;
+        }
+        div.container{
+            width: 500px;
+            height: 500px;
+            background-color: maroon;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"><div><span>中</span></div></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind</title>
+  <script src="../vue.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div id="App">
+    <ul class="title">
+      <li v-for ="(v, i) in titleList" >{{v}}</li>
+    </ul>
+    
+    
+  </div>
+  <script>
+    new Vue({
+      el:"#App",
+      data:{
+       
+        titleList:["标题一","标题二","标题三"]
+        
+      },
+     
+    })
+  </script>
+</body>
+</html>

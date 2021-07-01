@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="App">
+    <p>这是一个乘法:{{mul}}</p>
+    <p>这是一个求和:{{sum}}</p>
+    <h4>这是一个名字:{{fullName}}</h4>
+  </div>
+  <script>
+    const App =new Vue({
+      el:"#App",
+      // 属性
+      data() {
+        return {
+          num1 : 25,
+          num2 : 35,
+          plays:[
+            {names:"小红",age:18,status:78},
+            {names:"小明",age:18,status:56},
+            {names:"小花",age:18,status:98},
+            {names:"小杰",age:18,status:67},
+            {names:"小李",age:18,status:85},
+          ],
+          firstName:"jony",
+          lastName:"corr",
+        }
+      },
+      // 方法
+      methods: {
+        
+      },
+      // 计算属性
+      computed:{
+        mul(){
+          return this.num1 * this.num2
+        },
+        sum(){
+          let mul = 0
+          for(let value of this.plays){
+            mul += value.status
+          }
+          return mul
+      },
+      // 计算属性完整写法
+      fullName:{
+        // set方法需要给定参数
+        set(newValue){
+          this.firstName =newValue
+        },
+        // 这是一个只读属性
+        get(){
+          return this.firstName +this.lastName
+        }
+      }
+    }
+    })
+  </script>
+</body>
+</html>
